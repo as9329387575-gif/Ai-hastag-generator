@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>AI Hashtag Generator | Free Hashtag Tool for Instagram & YouTube</title>
+  <meta name="description" content="Free AI hashtag generator for Instagram, YouTube, TikTok. Get viral, niche & trending hashtags instantly. SEO optimized, no signup, copy with one click.">
+  <meta name="keywords" content="hashtag generator, ai hashtag generator, free instagram hashtag tool, youtube hashtag generator, tiktok hashtags">
+  <meta name="author" content="HashtagFlow">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourusername.github.io/">
+  <style>
+    /* RESET & GLOBAL */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f0f4ff 0%, #f9f3ff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      line-height: 1.5;
+      color: #1e1e2f;
+    }
+
+    /* MAIN CARD */
+    .main-card {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 3rem 3rem 2rem 2rem;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.5) inset;
+      padding: 2rem 1.8rem;
+    }
+
+    /* TYPOGRAPHY */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1d267d, #5c2a9d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #1e1e2f;
+      margin: 2.5rem 0 1rem;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2d2d44;
+      margin: 1.5rem 0 0.8rem;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #4a4a66;
+      margin-bottom: 2rem;
+    }
+
+    /* INPUT GROUP */
+    .tool-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      background: rgba(255,255,255,0.6);
+      border-radius: 2.5rem;
+      padding: 2rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.9);
+    }
+
+    .input-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #2d2d44;
+      letter-spacing: 0.3px;
+    }
+
+    input, select {
+      background: white;
+      border: 2px solid #e3d9ff;
+      border-radius: 60px;
+      padding: 0.9rem 1.4rem;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.2s ease;
+      color: #1a1a2c;
+    }
+
+    input:focus, select:focus {
+      border-color: #8b6ef6;
+      box-shadow: 0 0 0 4px rgba(139, 110, 246, 0.2);
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .flex-row > div {
+      flex: 1 1 160px;
+    }
+
+    /* BUTTON */
+    .generate-btn {
+      background: linear-gradient(115deg, #4b36cc, #9f4bd9);
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.3rem;
+      padding: 1.2rem 1.8rem;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 12px 25px -8px rgba(89, 42, 164, 0.5);
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255,255,255,0.3);
+      margin-top: 0.5rem;
+    }
+
+    .generate-btn:hover {
+      transform: scale(1.02);
+      background: linear-gradient(115deg, #5c48dd, #b15ce0);
+      box-shadow: 0 18px 30px -6px rgba(89, 42, 164, 0.7);
+    }
+
+    /* OUTPUT SECTION */
+    .output-container {
+      margin: 2rem 0 1rem;
+      background: rgba(0,0,0,0.02);
+      border-radius: 2rem;
+      padding: 1.5rem;
+    }
+
+    .hashtag-box {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 1.5rem;
+      font-size: 1.2rem;
+      line-height: 1.9;
+      word-break: break-word;
+      border: 2px dashed #c2b0ff;
+      min-height: 160px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+      transition: all 0.3s;
+    }
+
+    .hashtag-box span {
+      display: inline-block;
+      background: #f0ebff;
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      margin: 0.2rem 0.15rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #312a6b;
+      transition: 0.1s;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0 0.5rem;
+      justify-content: center;
+    }
+
+    .copy-btn {
+      background: white;
+      border: 2px solid #8f77f0;
+      color: #3a2c7a;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      flex: 1 1 160px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .copy-btn:hover {
+      background: #8f77f0;
+      color: white;
+      border-color: #8f77f0;
+    }
+
+    /* SEO TEXT */
+    .seo-content {
+      background: rgba(255,255,255,0.4);
+      padding: 1.8rem;
+      border-radius: 2rem;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .seo-content p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #232338;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.3rem 1.8rem;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.02);
+      border: 1px solid #ede4ff;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #281b5a;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-answer {
+      color: #3f3f5e;
+    }
+
+    /* CONTACT FORM */
+    .contact-form {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid #ffffffaa;
+    }
+
+    .form-group {
+      margin-bottom: 1.3rem;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      border-radius: 40px;
+      border: 2px solid #e0d4ff;
+      background: #fafaff;
+    }
+
+    .form-group textarea {
+      border-radius: 2rem;
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-btn {
+      background: #2e2559;
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #453585;
+    }
+
+    /* PRIVACY CARD */
+    .privacy-policy {
+      background: rgba(10, 5, 30, 0.05);
+      border-radius: 2rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .privacy-policy p {
+      margin: 0.7rem 0;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 2rem;
+      padding: 1.5rem 1rem 0.5rem;
+      border-top: 2px solid #ffffffaa;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #373759;
+    }
+
+    .footer-links a {
+      color: #3f2f7a;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 0.5rem;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* MOBILE FIRST — already responsive */
+    @media (min-width: 700px) {
+      h1 { font-size: 3rem; }
+      .tool-grid { padding: 2.5rem; }
+      .flex-row { flex-wrap: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-card">
+    <h1>AI Hashtag Generator – Free Instagram, YouTube & TikTok Hashtags</h1>
+    <p class="subhead">Smart, relevant & viral hashtags in one click — no signup, forever free.</p>
+
+    <!-- TOOL -->
+    <div class="tool-grid">
+      <div class="input-row">
+        <label for="keyword">🎯 Keyword / Topic</label>
+        <input type="text" id="keyword" placeholder="e.g. travel, vegan, coding" value="social media">
+      </div>
+
+      <div class="flex-row">
+        <div class="input-row">
+          <label for="platform">📱 Platform</label>
+          <select id="platform">
+            <option value="instagram" selected>Instagram</option>
+            <option value="youtube">YouTube</option>
+            <option value="tiktok">TikTok</option>
+            <option value="twitter">Twitter</option>
+            <option value="linkedin">LinkedIn</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="type">🏷️ Hashtag Type</label>
+          <select id="type">
+            <option value="viral">Viral</option>
+            <option value="niche">Niche</option>
+            <option value="trending">Trending</option>
+            <option value="business">Business</option>
+            <option value="motivational">Motivational</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="count">🔢 Number</label>
+          <select id="count">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="30">30</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="generate-btn" id="generateBtn">✨ Generate Hashtags</button>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="output-container" id="outputSection">
+      <div class="hashtag-box" id="hashtagDisplay">#create #content #viral #trending #explore #socialmedia #growth</div>
+      <div class="button-group">
+        <button class="copy-btn" id="copySingleBtn">📋 Copy first</button>
+        <button class="copy-btn" id="copyAllBtn">📋 Copy all</button>
+      </div>
+    </div>
+
+    <!-- SEO RICH CONTENT (400+ words) -->
+    <div class="seo-content">
+      <h2>Why creators love our AI hashtag generator</h2>
+      <p><strong>Free Instagram hashtag tool</strong> – no login, no paywall. Just type your topic and get 10, 20 or 30 smart hashtags instantly. Our AI analyzes current trends and mixes broad, niche, and viral tags so your content reaches the right audience. Whether you need <em>youtube hashtag generator</em> for videos or TikTok trending sounds, we’ve got you covered.</p>
+      <p>Hashtags remain the fastest way to grow on social media. But you need the right combination: too broad and you compete with millions, too narrow and nobody sees your post. Our tool solves that by blending popular tags like #love or #fashion with community-specific ones like #veganrecipes or #smallbiz. Plus we automatically add platform-relevant tags (#reels for Instagram, #shorts for YouTube, #fyp for TikTok).</p>
+      <h3>How to use (30 seconds)</h3>
+      <p>Enter a keyword (e.g. “photography”), pick your platform (Instagram, YouTube, TikTok, Twitter, LinkedIn), select a style (viral, niche, trending, business, motivational) and choose how many hashtags. Click generate. That’s it! Copy one or all with a single tap. The tool works on mobile, tablet, and desktop.</p>
+      <h3>Built for creators & businesses</h3>
+      <p>Stop guessing hashtags. Start reaching more people. Our <strong>AI hashtag generator</strong> is used by influencers, marketers, and small businesses to save time and boost engagement. It’s 100% free, with no hidden limits. We update the tag database regularly to match what’s trending right now. Perfect for Instagram Reels, YouTube shorts, LinkedIn articles, and Twitter threads.</p>
+      <p>Want to rank on search engines too? Our tags are SEO‑friendly and help your content appear in suggested feeds. The tool is also privacy-safe: we don’t store your keywords, and you can use it anonymously. Integrated copy buttons make workflow seamless. Monetization ready: you can easily place AdSense ads above or below the tool.</p>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <h2>❓ Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-question">1. What is an AI Hashtag Generator?</div><div class="faq-answer">It’s a smart tool that creates relevant, high‑performance hashtags based on your topic, platform, and style. No AI black box — just instant, curated tags.</div></div>
+      <div class="faq-item"><div class="faq-question">2. Is this hashtag tool free?</div><div class="faq-answer">Yes, 100% free. No registration, no credit card, no limits. Use it daily for all your posts.</div></div>
+      <div class="faq-item"><div class="faq-question">3. Does it work for Instagram and YouTube?</div><div class="faq-answer">Absolutely. It supports Instagram, YouTube, TikTok, Twitter, and LinkedIn – each with platform‑specific tags.</div></div>
+      <div class="faq-item"><div class="faq-question">4. How many hashtags should I use?</div><div class="faq-answer">Instagram likes 20–30, TikTok 3–5, YouTube 10–15. Our tool lets you pick 10, 20, or 30, so you stay optimized.</div></div>
+      <div class="faq-item"><div class="faq-question">5. Are these hashtags SEO optimized?</div><div class="faq-answer">Yes, they mix searchable broad tags and specific long‑tail tags to improve content discovery both on social and search engines.</div></div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <h2>📬 Contact us</h2>
+    <div class="contact-form">
+      <div class="form-group"><input type="text" placeholder="Your name" id="contactName"></div>
+      <div class="form-group"><input type="email" placeholder="Email address" id="contactEmail"></div>
+      <div class="form-group"><textarea placeholder="Your message..." id="contactMsg"></textarea></div>
+      <button class="submit-btn" id="contactSubmit">Send message</button>
+    </div>
+
+    <!-- PRIVACY POLICY SECTION -->
+    <h2>🔐 Privacy Policy</h2>
+    <div class="privacy-policy">
+      <p><strong>Information collection:</strong> We do not collect any personal information. The contact form works locally and shows an alert — no data is sent to any server.</p>
+      <p><strong>Cookies:</strong> This tool does not use cookies. Any third‑party ads (if shown later) may use cookies according to their own policies. We are AdSense‑ready and will clearly label any future ads.</p>
+      <p><strong>Third‑party disclosure:</strong> We do not sell, trade, or transfer your personally identifiable information. We value your privacy.</p>
+      <p><strong>Data protection:</strong> All processing happens in your browser. No hashtag keywords are stored or logged.</p>
+      <p><strong>Contact email placeholder:</strong> your@email.com (for inquiries)</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>© 2025 AI Hashtag Generator — Made for Content Creators</div>
+      <div class="footer-links">
+        <a href="#">Home</a> | <a href="#">Privacy</a> | <a href="#">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JAVASCRIPT (vanilla) -->
+  <script>
+    (function() {
+      // ----- HASHTAG TEMPLATES (realistic & modern) -----
+      const broadTags = ['love', 'instagood', 'photooftheday', 'fashion', 'beautiful', 'happy', 'cute', 'tbt', 'follow', 'like4like', 'style', 'travel', 'nature', 'art', 'food', 'fitness', 'motivation', 'explore', 'trending', 'viral', 'reels', 'shorts', 'fyp', 'explorepage', 'trend', 'memes', 'funny', 'music', 'gaming', 'work', 'life', 'goals'];
+      
+      const nicheMap = {
+        viral: ['viral', 'trending', 'explore', 'foryou', 'fyp', 'viralpost', 'instaviral', 'trendingnow', 'reelsinstagram', 'vibes'],
+        niche: ['niche', 'smallcommunity', 'hiddengem', 'dailycure', 'dedicated', 'realcontent', 'underground', 'safespace', 'purecommunity', 'slowliving'],
+        trending: ['trendingaudio', 'trendingvideo', 'viralchallenge', 'nowtrending', 'populardaily', 'ontrend', 'hotcontent', 'freshposts', 'newtrend', 'rising'],
+        business: ['business', 'entrepreneur', 'marketing', 'success', 'startup', 'smallbiz', 'branding', 'digitalmarketing', 'growth', 'sales', 'b2b', 'b2c'],
+        motivational: ['motivation', 'inspiration', 'successmindset', 'hustle', 'grind', 'believe', 'goalsetting', 'positivity', 'nevergiveup', 'dreambig']
+      };
+
+      function generateHashtags(keyword, platform, type, count) {
+        let tags = [];
+        const kw = keyword.trim().toLowerCase().replace(/\s+/g, ''); // remove spaces for hashtag
+        const kwSpaced = keyword.trim().toLowerCase().replace(/\s+/g, ''); // same but keep original idea
+
+        // 1. Add keyword-based (if not empty)
+        if (kw !== '') {
+          tags.push(`#${kw}`);
+          tags.push(`#${kw}life`);
+          tags.push(`#${kw}style`);
+          tags.push(`#${kw}community`);
+          tags.push(`#${kw}love`);
+          tags.push(`#best${kw}`);
+          tags.push(`#${kw}gram`);
+          tags.push(`#${kw}oftheday`);
+        }
+
+        // 2. Add platform-relevant
+        const platformTags = {
+          instagram: ['#instagram', '#reels', '#instadaily', '#instagood', '#photography', '#explorepage'],
+          youtube: ['#youtube', '#youtuber', '#video', '#subscriber', '#youtubeshorts', '#contentcreator'],
+          tiktok: ['#tiktok', '#fyp', '#foryoupage', '#viral', '#tiktokvideo', '#trending'],
+          twitter: ['#twitter', '#x', '#trending', '#viralpost', '#retweet', '#twittecommunity'],
+          linkedin: ['#linkedin', '#career', '#jobsearch', '#networking', '#professional', '#hiring']
+        };
+        if (platformTags[platform]) {
+          tags.push(...platformTags[platform]);
+        }
+
+        // 3. Add type-based (niche/trending/viral etc)
+        if (nicheMap[type]) {
+          tags.push(...nicheMap[type].map(t => `#${t}`));
+        }
+
+        // 4. Add some broad / random
+        for (let i = 0; i < 15; i++) {
+          let randomBroad = broadTags[Math.floor(Math.random() * broadTags.length)];
+          tags.push(`#${randomBroad}`);
+        }
+
+        // 5. extra trending style from platform
+        if (platform === 'tiktok') tags.push('#fyp', '#viral', '#tiktoktrend');
+        if (platform === 'youtube') tags.push('#subscribenow', '#videomarketing');
+        if (platform === 'instagram') tags.push('#reelit', '#instareach');
+
+        // Remove duplicates (case insensitive) but keep first occurrence
+        const seen = new Set();
+        tags = tags.filter(tag => {
+          const lower = tag.toLowerCase();
+          if (seen.has(lower)) return false;
+          seen.add(lower);
+          return true;
+        });
+
+        // Shuffle for more natural mix
+        for (let i = tags.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [tags[i], tags[j]] = [tags[j], tags[i]];
+        }
+
+        // Limit to requested number
+        const result = tags.slice(0, count);
+        return result.length ? result : ['#create', '#content', '#viral', '#trending', '#explore'];
+      }
+
+      // DOM elements
+      const keywordInput = document.getElementById('keyword');
+      const platformSelect = document.getElementById('platform');
+      const typeSelect = document.getElementById('type');
+      const countSelect = document.getElementById('count');
+      const generateBtn = document.getElementById('generateBtn');
+      const hashtagDisplay = document.getElementById('hashtagDisplay');
+      const copySingleBtn = document.getElementById('copySingleBtn');
+      const copyAllBtn = document.getElementById('copyAllBtn');
+
+      let currentTags = [];
+
+      function renderTags(tagsArray) {
+        currentTags = tagsArray;
+        hashtagDisplay.innerHTML = tagsArray.map(t => `<span>${t}</span>`).join(' ');
+      }
+
+      function generateAndRender() {
+        const keyword = keywordInput.value || 'content';
+        const platform = platformSelect.value;
+        const type = typeSelect.value;
+        const count = parseInt(countSelect.value, 10);
+        const tags = generateHashtags(keyword, platform, type, count);
+        renderTags(tags);
+      }
+
+      // Initialize with some tags
+      (function init() {
+        const initialTags = generateHashtags('social media', 'instagram', 'viral', 20);
+        renderTags(initialTags);
+      })();
+
+      generateBtn.addEventListener('click', generateAndRender);
+
+      // Copy first tag
+      copySingleBtn.addEventListener('click', () => {
+        if (currentTags.length > 0) {
+          navigator.clipboard.writeText(currentTags[0]).then(() => {
+            alert(`✅ Copied: ${currentTags[0]}`);
+          }).catch(() => alert('Press Ctrl+C to copy'));
+        } else {
+          alert('No hashtag to copy');
+        }
+      });
+
+      // Copy all tags (space separated)
+      copyAllBtn.addEventListener('click', () => {
+        if (currentTags.length > 0) {
+          const allTags = currentTags.join(' ');
+          navigator.clipboard.writeText(allTags).then(() => {
+            alert(`✅ Copied ${currentTags.length} hashtags!`);
+          }).catch(() => alert('Press Ctrl+C to copy'));
+        } else {
+          alert('No hashtags to copy');
+        }
+      });
+
+      // Contact form alert (frontend only)
+      document.getElementById('contactSubmit').addEventListener('click', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('contactName').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const msg = document.getElementById('contactMsg').value.trim();
+        if (!name || !email || !msg) {
+          alert('⚠️ Please fill in all fields.');
+        } else {
+          alert(`📨 Thanks for reaching out, ${name}. (Demo – no message sent)`);
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
